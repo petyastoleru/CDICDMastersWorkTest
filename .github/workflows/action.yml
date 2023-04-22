@@ -26,10 +26,6 @@ jobs:
         echo running scan on $(pwd)
         export SCAN_URL=https://dev.clouddefenseai.com
         cdefense online --api-key=f8f90866-d34a-4a4b-9662-1ee87c591640 --repository-url=https://github.com/${{ env.REPO_USER }}/${{ env.REPO_NAME }}.git
-        
-  build:
-    runs-on: ubuntu-20.04
-  
-    steps:
-    - name: Checkout
+
+    - name: Build
       uses: actions/checkout@v3
