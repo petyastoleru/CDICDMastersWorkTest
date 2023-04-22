@@ -21,7 +21,9 @@ jobs:
       uses: actions/checkout@v3
     
     - name: scan code for vulnerabilities
-      run: | 
+      run: |
+        echo Downloading cdefense CLI
+        curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz && tar -C /usr/local/bin -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /usr/local/bin/cdefense
         echo running scan on $(pwd)
         export SCAN_URL=https://dev.clouddefenseai.com
         cdefense online --api-key=c8f244ea-f0d2-4094-9220-104f04a4d8e4 --repository-url=https://github.com/${{ env.REPO_USER }}/${{ env.REPO_NAME }}.git
